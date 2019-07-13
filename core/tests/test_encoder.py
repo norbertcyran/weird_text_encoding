@@ -1,4 +1,4 @@
-from unittest import TestCase
+from unittest import TestCase, mock
 from random import Random
 
 from ..utils.encoder import WeirdTextEncoder
@@ -13,8 +13,10 @@ class EncoderTests(TestCase):
         self.random = Random(20)
         self.encoder = WeirdTextEncoder(SAMPLE_TEXT)
 
-    def test_encode_word(self):
+    @mock.patch('core.utils.encoder.random.sample')
+    def test_encode_word(self, sample_mock):
         """Letters in words are shuffled except first and last letter."""
+        sample_mock.side_effect = self.random.sample
         word = 'Lorem'
         encoded = self.encoder.encode_word(word)
 
