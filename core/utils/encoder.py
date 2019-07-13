@@ -1,6 +1,8 @@
 import random
 import re
 
+WORD_RE = re.compile(r'(\w+)')
+
 
 class WeirdTextEncoder:
     """
@@ -11,14 +13,26 @@ class WeirdTextEncoder:
     in \n--weird--\n clause. In the last line a list of sorted original
     word is appended.
     """
-    word_re = r'(\w+)'
 
-    def __init__(self, text):
-        self.words = re.findall(self.word_re, text)
+    def __init__(self, text: str):
+        self.text = text
+        self.words = WORD_RE.findall(self.text)
+
+    def encode(self):
+        """Build encoder output."""
+
+    def encode_text(self) -> str:
+        """Build encoded string from text."""
+        encoded_text = self.text
+        for word in self.words:
+            encoded_text = re.sub(word, self.encode_word(word), encoded_text)
+        return encoded_text
 
     @staticmethod
-    def encode_word(word):
+    def encode_word(word: str) -> str:
         """Encode single word. Shuffle all letters except last and first."""
+        if len(word) <= 3:
+            return word
         letters = list(word)
         inner_letters = letters[1:-1]
         shuffled_inner = inner_letters
