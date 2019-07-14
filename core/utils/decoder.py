@@ -17,3 +17,6 @@ class WeirdTextDecoder:
             )
         self.encoded_text = parse_result.group(1)
         self.words = parse_result.group(2).split()
+
+    def decode_word(self, word):
+        """Decode single word to its initial form."""
