@@ -33,3 +33,16 @@ class EncoderTests(TestCase):
         encoded_text = self.encoder.encode_text()
 
         self.assertEqual(encoded_text, ENCODED_TEXT)
+
+    @mock.patch('core.utils.encoder.random.sample')
+    def test_encode(self, sample_mock):
+        """Text is encoded and wrapped in separator and list of sorted words."""
+        sample_mock.side_effect = self.random.sample
+        sorted_words = ' '.join(sorted(self.encoder.words, key=str.lower))
+
+        encoder_output = self.encoder.encode()
+
+        expected = (f'{self.encoder.separator}'
+                    f'{ENCODED_TEXT}{self.encoder.separator}{sorted_words}')
+
+        self.assertEqual(encoder_output, expected)
