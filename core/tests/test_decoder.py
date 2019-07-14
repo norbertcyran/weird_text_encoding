@@ -30,6 +30,12 @@ class DecoderTestCase(TestCase):
     def test_decode_word(self):
         """Word is correctly decoded to its initial form."""
         word = 'Lroem'
-        decoded_word = self.decoder.decode_word('Lroem')
+        decoded_word = self.decoder.decode_word(word)
 
         self.assertEqual(decoded_word, 'Lorem')
+
+    def test_decode(self):
+        """Full decoder input is decoded to its initial form."""
+        decoded_text = self.decoder.decode()
+
+        self.assertEqual(decoded_text, DECODED_TEXT)
