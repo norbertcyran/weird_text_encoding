@@ -40,10 +40,10 @@ class WeirdTextEncoder:
     @staticmethod
     def encode_word(word: str) -> str:
         """Encode single word. Shuffle all letters except last and first."""
-        if len(word) <= 3:
-            return word
         letters = list(word)
         inner_letters = letters[1:-1]
+        if len(set(inner_letters)) < 2:
+            return word
         shuffled_inner = inner_letters
         while inner_letters == shuffled_inner:
             shuffled_inner = random.sample(inner_letters, len(inner_letters))

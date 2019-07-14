@@ -46,3 +46,9 @@ class EncoderTests(TestCase):
                     f'{ENCODED_TEXT}{self.encoder.separator}{sorted_words}')
 
         self.assertEqual(encoder_output, expected)
+
+    def test_encode_word_same_letters(self):
+        """Word is not changed when all letters inside are the same."""
+        word = 'biiiig'
+        encoded_word = self.encoder.encode_word(word)
+        self.assertEqual(encoded_word, word)
