@@ -44,3 +44,15 @@ class DecoderTestCase(TestCase):
         decoded_text = weird_text_decode(ENCODED_TEXT)
 
         self.assertEqual(decoded_text, DECODED_TEXT)
+
+    def test_decode_text_with_newline(self):
+        """Text with newlines in it is correcty decoded."""
+        encoded_text = ('\n—weird—\nTihs is a lnog loonog tset sntceene,\n'
+                        'wtih smoe big (biiiiig) wdros!\n—weird—\n'
+                        'long looong sentence some test This with words')
+        expected = ('This is a long looong test sentence,\n'
+                    'with some big (biiiiig) words!')
+
+        decoded_text = weird_text_decode(encoded_text)
+
+        self.assertEqual(decoded_text, expected)
