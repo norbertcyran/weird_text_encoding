@@ -21,6 +21,8 @@ class WeirdTextEncoder:
 
     def encode(self):
         """Build encoder output."""
+        encoded_text = self.encode_text()
+        return self.wrap_output(encoded_text)
 
     def encode_text(self) -> str:
         """Build encoded string from text."""
@@ -41,3 +43,8 @@ class WeirdTextEncoder:
             shuffled_inner = random.sample(inner_letters, len(inner_letters))
         letters[1:-1] = shuffled_inner
         return ''.join(letters)
+
+    def wrap_output(self, output: str) -> str:
+        """Wrap encoded output in separator and sorted list of words."""
+        sorted_words = ' '.join(sorted(self.words, key=str.lower))
+        return f'{self.separator}{output}{self.separator}{sorted_words}'
