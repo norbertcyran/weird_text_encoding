@@ -10,9 +10,10 @@ class WeirdTextEncoder:
 
     Every word in text gets shuffled except its first and last letter.
     Does not affect punctuation and whitespaces. Encoded text is wrapped
-    in \n--weird--\n clause. In the last line a list of sorted original
+    in \n—weird—\n separator. In the last line a list of sorted original
     word is appended.
     """
+    separator = '\n—weird—\n'
 
     def __init__(self, text: str):
         self.text = text
