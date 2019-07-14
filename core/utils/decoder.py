@@ -18,8 +18,18 @@ class WeirdTextDecoder:
         self.encoded_text = parse_result.group(1)
         self.words = parse_result.group(2).split()
 
+    def decode(self):
+        """Decode weird encoded text into its initial form."""
+        decoded_text = self.encoded_text
+        words = re.findall(r'(\w+)', self.encoded_text)
+        for word in words:
+            decoded_text = re.sub(word, self.decode_word(word), decoded_text)
+        return decoded_text
+
     def decode_word(self, word):
         """Decode single word to its initial form."""
+        if len(word) <= 3:
+            return word
         for initial_word in self.words:
             if self.is_encoded_by(initial_word, word):
                 return initial_word
