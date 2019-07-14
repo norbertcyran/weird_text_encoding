@@ -3,7 +3,7 @@ import re
 from .exceptions import DecoderInputError
 
 ENCODED_RE = re.compile(r'\n—weird—\n(.*)\n—weird—\n([\w\s]+)',
-                        flags=re.MULTILINE)
+                        flags=re.DOTALL)
 
 
 def weird_text_decode(encoded_text):
