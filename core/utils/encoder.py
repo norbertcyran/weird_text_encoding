@@ -4,6 +4,12 @@ import re
 WORD_RE = re.compile(r'(\w+)')
 
 
+def weird_text_encode(text):
+    """Shortcut function for weird text encoding."""
+    encoder = WeirdTextEncoder(text)
+    return encoder.encode()
+
+
 class WeirdTextEncoder:
     """
     Class for text encoding.
