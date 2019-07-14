@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from ..utils.decoder import WeirdTextDecoder
+from ..utils.decoder import WeirdTextDecoder, weird_text_decode
 from ..utils.exceptions import DecoderInputError
 
 ENCODED_TEXT = ('\n—weird—\n'
@@ -37,5 +37,10 @@ class DecoderTestCase(TestCase):
     def test_decode(self):
         """Full decoder input is decoded to its initial form."""
         decoded_text = self.decoder.decode()
+
+        self.assertEqual(decoded_text, DECODED_TEXT)
+
+    def test_weird_text_decode(self):
+        decoded_text = weird_text_decode(ENCODED_TEXT)
 
         self.assertEqual(decoded_text, DECODED_TEXT)

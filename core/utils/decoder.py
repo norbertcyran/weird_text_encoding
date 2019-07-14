@@ -6,6 +6,12 @@ ENCODED_RE = re.compile(r'\n—weird—\n(.*)\n—weird—\n([\w\s]+)',
                         flags=re.MULTILINE)
 
 
+def weird_text_decode(encoded_text):
+    """Shortcut function for decoding weird encoded text."""
+    decoder = WeirdTextDecoder(encoded_text)
+    return decoder.decode()
+
+
 class WeirdTextDecoder:
     """Class for decoding string encoded by weird text encoding."""
     def __init__(self, encoded_text):
