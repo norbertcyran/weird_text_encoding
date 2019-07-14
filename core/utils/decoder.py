@@ -42,7 +42,7 @@ class WeirdTextDecoder:
         return word
 
     @staticmethod
-    def is_encoded_by(word, initial_word):
+    def is_encoded_by(initial_word, word):
         """Check if given initial word is encoded by word."""
         if (len(initial_word) != len(word) or initial_word[0] != word[0]
                 and initial_word[-1] != word[-1]):
