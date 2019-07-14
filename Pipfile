@@ -10,6 +10,7 @@ django = "*"
 djangorestframework = "*"
 django-heroku = "*"
 gunicorn = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
