@@ -20,3 +20,19 @@ class WeirdTextDecoder:
 
     def decode_word(self, word):
         """Decode single word to its initial form."""
+        for initial_word in self.words:
+            if self.is_encoded_by(initial_word, word):
+                return initial_word
+        return word
+
+    @staticmethod
+    def is_encoded_by(word, initial_word):
+        """Check if given initial word is encoded by word."""
+        if (len(initial_word) != len(word) or initial_word[0] != word[0]
+                and initial_word[-1] != word[-1]):
+            return False
+
+        for letter in word[1:-1]:
+            if letter not in initial_word[1:-1]:
+                return False
+        return True
