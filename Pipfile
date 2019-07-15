@@ -11,6 +11,9 @@ djangorestframework = "*"
 django-heroku = "*"
 gunicorn = "*"
 python-dotenv = "*"
+coreapi = "*"
+pygments = "*"
+markdown = "*"
 
 [requires]
 python_version = "3.7"
