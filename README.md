@@ -1,4 +1,5 @@
 ## Weird text encoding
+[![CircleCI](https://circleci.com/gh/cyranekpotasu/weird_text_encoding.svg?style=svg)](https://circleci.com/gh/cyranekpotasu/weird_text_encoding)
 
 Text encoding - for each word in original text, the first and last character
 stay the same and the rest is shuffled. Punctuation and whitespaces are not
