@@ -30,6 +30,8 @@ class DecodeView(GenericAPIView):
     serializer_class = DecodeSerializer
 
     def post(self, request, *args, **kwargs):
+        """Decodes data encoded with weird encoding. Accepts JSON with key
+        'encoded_text'."""
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
