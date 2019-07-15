@@ -128,4 +128,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 if PROD_HEROKU:
-    django_heroku.settings(allowed_hosts=False)
+    django_heroku.settings(locals(), allowed_hosts=False)
